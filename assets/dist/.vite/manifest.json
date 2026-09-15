@@ -1,0 +1,16 @@
+{
+  "assets/src/js/main.js": {
+    "file": "main.js",
+    "name": "main",
+    "src": "assets/src/js/main.js",
+    "isEntry": true
+  },
+  "assets/src/scss/editor.scss": {
+    "file": "editor.css",
+    "src": "assets/src/scss/editor.scss"
+  },
+  "style.css": {
+    "file": "main.css",
+    "src": "style.css"
+  }
+}

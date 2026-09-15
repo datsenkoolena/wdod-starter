@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+vendor/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+
+# Tooling caches
+.phpcs-cache
+
+# assets/dist (including .vite/manifest.json) is committed on purpose so the
+# theme installs from a zip without a build step.

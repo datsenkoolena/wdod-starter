@@ -1,0 +1,260 @@
+// Site header, primary navigation, mobile menu.
+
+@use 'tokens' as *;
+
+.wdod-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: var(--wdod-color-white);
+	border-bottom: 1px solid var(--wdod-color-border);
+
+	.admin-bar & {
+		top: 32px;
+
+		@media screen and (max-width: 782px) {
+			top: 46px;
+		}
+	}
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--wdod-space-2);
+		min-height: var(--wdod-header-height);
+		flex-wrap: wrap;
+	}
+
+	&__brand {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+
+		.custom-logo-link {
+			display: inline-block;
+			line-height: 0;
+		}
+
+		.custom-logo {
+			max-height: 3rem;
+			width: auto;
+		}
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	&__tagline {
+		margin: 0;
+		font-size: var(--wdod-size-small);
+		color: var(--wdod-color-muted);
+	}
+
+	// Mobile toggle.
+	&__toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid var(--wdod-color-border);
+		border-radius: var(--wdod-radius-small);
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+
+		@include mq('lg') {
+			display: none;
+		}
+	}
+
+	&__toggle-bar {
+		display: none;
+	}
+
+	&__toggle-label {
+		font-size: var(--wdod-size-small);
+	}
+
+	// Icon: three bars morphing into an X.
+	&__toggle {
+		.wdod-header__toggle-bar {
+			display: block;
+			width: 1.25rem;
+			height: 2px;
+			background: currentColor;
+			border-radius: 2px;
+			transition: transform var(--wdod-transition), opacity var(--wdod-transition);
+		}
+
+		.wdod-header__toggle-bar + .wdod-header__toggle-bar {
+			margin-top: -2px;
+		}
+
+		// Stack bars vertically in a small column.
+		.wdod-header__toggle-bar:nth-child(1) { transform: translateY(-5px); }
+		.wdod-header__toggle-bar:nth-child(3) { transform: translateY(5px); }
+
+		&[aria-expanded='true'] {
+			.wdod-header__toggle-bar:nth-child(1) { transform: rotate(45deg); }
+			.wdod-header__toggle-bar:nth-child(2) { opacity: 0; }
+			.wdod-header__toggle-bar:nth-child(3) { transform: rotate(-45deg); }
+		}
+	}
+}
+
+.wdod-nav {
+	// Mobile: collapsed, full-width panel under the bar.
+	flex-basis: 100%;
+	display: none;
+	padding-block: var(--wdod-space-2) var(--wdod-space-3);
+
+	&.is-open {
+		display: block;
+	}
+
+	@include mq('lg') {
+		display: flex;
+		flex-basis: auto;
+		align-items: center;
+		gap: var(--wdod-space-3);
+		padding: 0;
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+
+		@include mq('lg') {
+			flex-direction: row;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		a {
+			display: block;
+			padding: 0.5rem 0.75rem;
+			border-radius: var(--wdod-radius-small);
+			color: inherit;
+			text-decoration: none;
+			font-weight: 500;
+			transition: background-color var(--wdod-transition), color var(--wdod-transition);
+
+			&:hover,
+			&:focus-visible {
+				background: var(--wdod-color-light);
+				color: var(--wdod-color-primary);
+			}
+		}
+
+		.current-menu-item > a,
+		.current-menu-ancestor > a {
+			color: var(--wdod-color-primary);
+		}
+
+		// Sub menus.
+		.sub-menu {
+			list-style: none;
+			margin: 0;
+			padding: 0 0 0 var(--wdod-space-2);
+
+			@include mq('lg') {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				min-width: 12rem;
+				padding: 0.5rem;
+				background: var(--wdod-color-white);
+				border: 1px solid var(--wdod-color-border);
+				border-radius: var(--wdod-radius-small);
+				box-shadow: var(--wdod-shadow);
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(0.25rem);
+				transition: opacity var(--wdod-transition), transform var(--wdod-transition), visibility 0s linear var(--wdod-transition);
+			}
+		}
+
+		.menu-item-has-children {
+			@include mq('lg') {
+				position: relative;
+
+				&:hover > .sub-menu,
+				&:focus-within > .sub-menu {
+					opacity: 1;
+					visibility: visible;
+					transform: none;
+					transition-delay: 0s;
+				}
+			}
+		}
+	}
+
+	&__assign {
+		font-size: var(--wdod-size-small);
+	}
+
+	&__extras {
+		display: flex;
+		align-items: center;
+		gap: var(--wdod-space-2);
+		margin-top: var(--wdod-space-2);
+
+		@include mq('lg') {
+			margin-top: 0;
+		}
+	}
+}
+
+// Header mini-cart link (WooCommerce).
+.wdod-cart-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.4rem 0.6rem;
+	border-radius: var(--wdod-radius-small);
+	color: inherit;
+	text-decoration: none;
+	font-size: var(--wdod-size-small);
+	font-weight: 600;
+
+	&:hover {
+		background: var(--wdod-color-light);
+	}
+
+	&__count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 1.5rem;
+		height: 1.5rem;
+		padding-inline: 0.4rem;
+		border-radius: 999px;
+		background: var(--wdod-color-accent);
+		color: var(--wdod-color-dark);
+		font-size: 0.75rem;
+		line-height: 1;
+	}
+}
+
+// Lock body scroll while the mobile panel is open.
+body.wdod-menu-open {
+	@media (max-width: 63.99rem) {
+		overflow: hidden;
+	}
+}

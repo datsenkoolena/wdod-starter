@@ -1,0 +1,61 @@
+// Block editor styles. Loaded via add_editor_style(); WordPress scopes every
+// selector under .editor-styles-wrapper automatically.
+
+@use 'tokens' as *;
+
+body {
+	font-family: var(--wdod-font-body);
+	font-size: var(--wdod-size-medium);
+	line-height: 1.6;
+	color: var(--wdod-color-dark);
+	background: var(--wdod-color-white);
+}
+
+// Match the front-end content widths (theme.json layout sizes drive the
+// actual constraint; these are here for classic/non-layout contexts).
+.wp-block {
+	max-width: var(--wdod-content-width);
+
+	&[data-align='wide'] {
+		max-width: var(--wdod-wide-width);
+	}
+
+	&[data-align='full'] {
+		max-width: none;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.2;
+	font-weight: 700;
+}
+
+a {
+	color: var(--wdod-color-primary);
+}
+
+blockquote {
+	border-left: 3px solid var(--wdod-color-accent);
+	padding-left: var(--wdod-space-2);
+	color: var(--wdod-color-muted);
+}
+
+.wp-block-button__link,
+.wp-element-button {
+	border-radius: var(--wdod-radius-small);
+	font-weight: 600;
+}
+
+// Give the post title the same feel as the front end.
+.editor-post-title__input,
+.wp-block-post-title {
+	font-family: var(--wdod-font-body);
+	font-size: var(--wdod-size-x-large);
+	font-weight: 700;
+	line-height: 1.2;
+}

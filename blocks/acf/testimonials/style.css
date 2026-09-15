@@ -1,0 +1,149 @@
+/* WDOD Testimonials block. Scroll-snap slider, no JS dependency for basic use. */
+
+.wdod-testimonials {
+	padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.wdod-testimonials__heading {
+	text-align: center;
+	margin: 0 0 2rem;
+}
+
+.wdod-testimonials__track {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: min(100%, 26rem);
+	gap: 1.25rem;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	padding: 0.25rem 0.25rem 1rem;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+
+.wdod-testimonials__track::-webkit-scrollbar {
+	display: none;
+}
+
+.wdod-testimonials__track:focus-visible {
+	outline: 2px solid var(--wp--preset--color--primary, #1e40af);
+	outline-offset: 4px;
+}
+
+.wdod-testimonials.has-one-item .wdod-testimonials__track {
+	grid-auto-columns: 100%;
+	justify-content: center;
+}
+
+.wdod-testimonials__item {
+	scroll-snap-align: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.25rem;
+	margin: 0;
+	padding: 1.75rem;
+	background: var(--wp--preset--color--light, #f3f4f6);
+	border-radius: var(--wp--custom--wdod--radius, 0.5rem);
+	box-shadow: var(--wp--custom--wdod--shadow, none);
+}
+
+.wdod-testimonials__quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 1.0625rem;
+	line-height: 1.6;
+}
+
+.wdod-testimonials__quote::before {
+	content: "\201C";
+	display: block;
+	font-size: 3rem;
+	line-height: 0.6;
+	color: var(--wp--preset--color--accent, #f59e0b);
+	margin-bottom: 0.5rem;
+}
+
+.wdod-testimonials__quote p:last-child {
+	margin-bottom: 0;
+}
+
+.wdod-testimonials__meta {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.wdod-testimonials__avatar {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.wdod-testimonials__who {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+}
+
+.wdod-testimonials__author {
+	font-weight: 600;
+}
+
+.wdod-testimonials__role {
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+	opacity: 0.7;
+}
+
+.wdod-testimonials__controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 0.5rem;
+}
+
+.wdod-testimonials__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 1px solid var(--wp--preset--color--dark, #111827);
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	font-size: 1.1rem;
+	transition: background-color var(--wp--custom--wdod--transition, 180ms ease), color var(--wp--custom--wdod--transition, 180ms ease);
+}
+
+.wdod-testimonials__button:hover,
+.wdod-testimonials__button:focus-visible {
+	background: var(--wp--preset--color--dark, #111827);
+	color: var(--wp--preset--color--white, #fff);
+}
+
+.wdod-testimonials__button[disabled] {
+	opacity: 0.35;
+	cursor: default;
+	background: transparent;
+	color: inherit;
+}
+
+.wdod-testimonials__status {
+	min-width: 4rem;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wdod-testimonials__track {
+		scroll-behavior: auto;
+	}
+}

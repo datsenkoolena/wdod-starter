@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wdod/testimonials",
+	"title": "WDOD Testimonials",
+	"description": "A horizontal, swipeable list of customer quotes with prev/next controls. No slider library needed.",
+	"category": "wdod",
+	"icon": "format-quote",
+	"keywords": [ "testimonials", "reviews", "quotes", "slider", "wdod" ],
+	"textdomain": "wdod-starter",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php",
+		"blockVersion": 2,
+		"validate": false
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false,
+		"html": false,
+		"mode": true
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "What clients say",
+				"_is_preview": true
+			}
+		}
+	},
+	"style": "file:./style.css",
+	"script": "file:./script.js"
+}

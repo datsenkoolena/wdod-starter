@@ -1,0 +1,112 @@
+/* WDOD Hero block. Scoped to .wdod-hero; tokens come from theme.json. */
+
+.wdod-hero {
+	--wdod-hero-overlay: 0.5;
+	position: relative;
+	overflow: hidden;
+	background: var(--wp--preset--color--dark, #111827);
+	color: var(--wp--preset--color--white, #fff);
+	padding-block: clamp(3rem, 10vw, 7rem);
+	border-radius: var(--wp--custom--wdod--radius, 0.5rem);
+}
+
+.wdod-hero.alignfull {
+	border-radius: 0;
+}
+
+.wdod-hero__media {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.wdod-hero__media::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--wp--preset--color--dark, #111827);
+	opacity: var(--wdod-hero-overlay);
+}
+
+.wdod-hero__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(1.04);
+	transition: transform 1200ms ease;
+}
+
+.wdod-hero.is-visible .wdod-hero__image {
+	transform: scale(1);
+}
+
+.wdod-hero__inner {
+	position: relative;
+	z-index: 1;
+	max-width: 46rem;
+	margin-inline: auto;
+	text-align: center;
+}
+
+.wdod-hero__eyebrow,
+.wdod-hero__heading,
+.wdod-hero__text,
+.wdod-hero__actions {
+	opacity: 0;
+	transform: translateY(0.75rem);
+	transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.wdod-hero.is-visible .wdod-hero__eyebrow { opacity: 1; transform: none; transition-delay: 0ms; }
+.wdod-hero.is-visible .wdod-hero__heading { opacity: 1; transform: none; transition-delay: 80ms; }
+.wdod-hero.is-visible .wdod-hero__text    { opacity: 1; transform: none; transition-delay: 160ms; }
+.wdod-hero.is-visible .wdod-hero__actions { opacity: 1; transform: none; transition-delay: 240ms; }
+
+.wdod-hero__eyebrow {
+	margin: 0 0 0.75rem;
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--accent, #f59e0b);
+}
+
+.wdod-hero__heading {
+	margin: 0 0 1rem;
+	font-size: clamp(2rem, 5vw, 3.25rem);
+	line-height: 1.1;
+	color: inherit;
+}
+
+.wdod-hero__text {
+	margin: 0 auto 1.75rem;
+	max-width: 38rem;
+	font-size: 1.125rem;
+	opacity: 0.9;
+}
+
+.wdod-hero__text p:last-child {
+	margin-bottom: 0;
+}
+
+.wdod-hero__actions {
+	margin: 0;
+}
+
+/* Editor: keep the block visible even when the preview iframe is narrow. */
+.block-editor-block-list__layout .wdod-hero {
+	min-height: 12rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wdod-hero__image,
+	.wdod-hero__eyebrow,
+	.wdod-hero__heading,
+	.wdod-hero__text,
+	.wdod-hero__actions {
+		transition: none;
+		opacity: 1;
+		transform: none;
+	}
+}

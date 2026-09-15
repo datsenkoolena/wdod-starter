@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wdod/hero",
+	"title": "WDOD Hero",
+	"description": "Full-width hero with eyebrow, heading, text, call-to-action button and a background image.",
+	"category": "wdod",
+	"icon": "cover-image",
+	"keywords": [ "hero", "banner", "cover", "wdod" ],
+	"textdomain": "wdod-starter",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php",
+		"blockVersion": 2,
+		"validate": false
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false,
+		"html": false,
+		"mode": true
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"eyebrow": "Introducing",
+				"heading": "Build faster with WDOD Starter",
+				"text": "A lean classic theme with a modern build pipeline.",
+				"_is_preview": true
+			}
+		}
+	},
+	"style": "file:./style.css",
+	"script": "file:./script.js"
+}

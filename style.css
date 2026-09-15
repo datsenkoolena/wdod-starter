@@ -1,0 +1,21 @@
+/*
+Theme Name:        WDOD Starter
+Theme URI:         https://github.com/datsenkoolena/wdod-starter
+Author:            Olena Datsenko
+Author URI:        https://github.com/datsenkoolena
+Description:       A lean classic WordPress starter theme built for agency work. Vite + Sass build pipeline, theme.json design tokens, ACF blocks (Hero, Testimonials) with graceful fallbacks, ACF Theme Settings page, WooCommerce templates and wrappers, WPML helpers and config, and Elementor Theme Builder locations. Works with none of those plugins installed and gets better with each one.
+Version:           1.0.0
+Requires at least: 6.4
+Tested up to:      7.1
+Requires PHP:      7.4
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       wdod-starter
+Tags:              blog, e-commerce, one-column, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-styles, wide-blocks, editor-style
+*/
+
+/*
+ * WDOD Starter ships no CSS in this file on purpose.
+ * Styles are authored in assets/src/scss and compiled by Vite into assets/dist.
+ * See README.md for the build workflow.
+ */

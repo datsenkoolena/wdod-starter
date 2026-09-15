@@ -1,0 +1,32 @@
+{
+	"name": "wdod/starter-theme",
+	"description": "WDOD Starter - a classic WordPress starter theme ready for Elementor, WooCommerce, ACF and WPML.",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "WDOD",
+			"homepage": "https://github.com/datsenkoolena"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.10",
+		"wp-coding-standards/wpcs": "^3.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+	},
+	"scripts": {
+		"lint": "find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -print0 | xargs -0 -n1 -P4 php -l",
+		"phpcs": "phpcs",
+		"phpcbf": "phpcbf"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"sort-packages": true
+	}
+}
